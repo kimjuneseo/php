@@ -81,6 +81,7 @@ class TodoController extends MasterController
     {
 
        $kk =  Lib::msgAndBoolen("정말 삭제하시겠습니까?", "/todo/list");
+       echo $kk;
         $id = $_GET['id'];
         $result = DB::fetch("DELETE FROM `board` WHERE id = ?", [$id]);
 

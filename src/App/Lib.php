@@ -23,9 +23,9 @@ class Lib
     }
     
     public static function msgAndBoolen($msg, $url){
-        echo "<script>";
-        echo "   confirm('$msg') ? location.href='{$url}' : history.back();";
-        echo "</script>";
-        exit;
+        $Confirm = "<script> let deleteConfirm   = confirm('$msg'); </script>";
+        print $Confirm;
+        echo "<script>  deleteConfirm ? location.href='{$url}' : history.back(); </script>";
+
     }
 }

@@ -1,4 +1,7 @@
-
+<script>
+    let deleteConfirm= confirm('$msg'); 
+    console.log(deleteConfirm);
+</script>
         <h3 class="m-5">글수정 하기</h3>
         <form method="post">
             <div class="form-group">
