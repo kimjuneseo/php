@@ -133,3 +133,38 @@ class TodoController extends MasterController
     }
  
 
+
+// {
+//     $id= user()->{"name"};
+//     $title = $_POST['title'];
+//     $date = $_POST['date'];
+//     $owner = $_POST['time'];
+//     $content = $_POST['content'];
+    
+//     if($id === "" || $title === "" || $date === "" || $owner === "" || $content === ""){
+//         // 라이브러리 실행
+//         Lib::msgAndBack("필수값이 공백입니다.");
+//     }
+
+
+//     $sql = "INSERT INTO todos (`id`, `title`, `content`, `owner`, `date`) VALUES (?, ?, ?, ?, ?)";
+//     $result = DB::execute($sql, [$id, $title, $content, $owner, $date]);
+
+//     $write = "SELECT * FROM todos WHERE owner = ? ";
+//     $writeResult = DB::fetchAll($write, [$id]);
+//     var_dump ($writeResult);
+//     // $todo = DB::fetch($writeResult,[]);
+
+//     // var_dump($todo);
+//     // $_SESSION['todo'] = $todo;
+//     // if(!$result){
+//     //     Lib::msgAndBack("값이 올바르지 않습니다");
+//     // }else{
+//     //     Lib::msgAndGo("값이 정상적으로 들어갔습니다", "/todo/list");
+//     // }
+    
+
+//     //실제로 글이 쓰여지는 프로세스를 작성
+// }
+
+
