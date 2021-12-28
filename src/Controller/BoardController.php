@@ -6,7 +6,7 @@ class BoardController extends MasterController
 {
     public function index()
     {
-        // $this->render("main", []);
+        $this->render("board/index", []);
     }
 
 }

@@ -6,7 +6,7 @@ class MainController extends MasterController
 {
     public function index()
     {
-       $this->render("main", []);
+       $this->render("main", ['msg'=>'Hello World']);
     }
 
 }
