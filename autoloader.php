@@ -3,7 +3,7 @@
 
 function myLoader(string $name)
 {
-    require_once __ROOT."/". str_replace('\\', '/', $name).".php";
+    require_once __ROOT . "/" . str_replace('\\', '/', $name) . ".php";
 }
 
 // PSR-4
