@@ -1,10 +1,11 @@
 <?php
-//autoloader.php
+// autoloader.php
 
 function myLoader(string $name)
 {
-    require_once __ROOT . "/" . str_replace('\\', '/', $name) . ".php";
+    require_once __ROOT."/". str_replace('\\', '/', $name).".php";
 }
 
-//simple php library
-spl_autoload_register("myLoader");
+// PSR-4
+//simple php libary
+spl_autoload_register("myloader");
