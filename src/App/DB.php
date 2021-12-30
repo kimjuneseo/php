@@ -8,7 +8,7 @@ class DB
     private static function getDB()
     {
         if(is_null(self::$db)){
-            self::$db = new \PDO("mysql:host=localhost; dbname=todo; charset=utf8mb", "root", "1234")
+            self::$db = new \PDO("mysql:host=localhost; dbname=todo; charset=utf8mb", "root", "");
 
             
         }
