@@ -33,10 +33,17 @@
                             <a class="nav-link" href="#">일정삭제</a>
                         </li>
                     </ul>
-                    <div>
-                        <a href="/user/register" class="btn btn-primary">회원가입</a>
-                        <a href="/user/login" class="btn btn-primary">로그인</a>
-                    </div>
+                    <?php if(user()) :?>
+                        <div>
+                            <a href="/user/register" class="btn btn-primary"> <?=user()->name ?> </a>
+                            <a href="/user/logout" class="btn btn-danger">로그아웃</a>
+                        </div>
+                    <?php else : ?>
+                        <div>
+                            <a href="/user/register" class="btn btn-primary"> 회원가입 </a>
+                            <a href="/user/login" class="btn btn-primary">로그인</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
