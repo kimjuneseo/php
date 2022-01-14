@@ -27,7 +27,7 @@ class UserController extends MasterController
             Lib::msgAndBack("비밀번호와 확인이 다릅니다");
         }
 
-        $result = DB::fetch("SELECT * FROM todo WHERE id = ?", [$userId]);
+        $result = DB::fetch("SELECT * FROM users WHERE id = ?", [$userId]);
 
         if($result) {
             Lib::msgAndBack("이미 해당 아이디로 가입되어 있습니다.");
@@ -40,7 +40,7 @@ class UserController extends MasterController
            Lib::msgAndBack("DB 오류");
         }
 
-        Lib::msgaAndGo("성공적으로 회원가입 되었습니다", "/user/login");
+        Lib::msgAndGo("성공적으로 회원가입 되었습니다", "/user/login");
     }
 
     public function loginPage()
@@ -52,7 +52,7 @@ class UserController extends MasterController
     {
         $userId = $_POST['userid'];
         $pass = $_POST['password'];
-        $user = DB::fetch("SELECT * FROM users WHERE id = ? AND password = ?", [$userId, $pass] );
+        $user = DB::fetch("SELECT * FROM users WHERE id = ? AND password = PASSWORD(?)", [$userId, $pass] );
 
         if(!$user){
             Lib::msgAndBack("잘못된 로그인 정보입니다.");  
