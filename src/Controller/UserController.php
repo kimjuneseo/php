@@ -23,7 +23,7 @@ class UserController extends MasterController
             Lib::msgAndBack("필수값은 공백이 될 수 없습니다.");
         }
 
-        if($pass !==$passc){
+        if($pass !== $passc){
             Lib::msgAndBack("비밀번호와 확인이 다릅니다");
         }
 
