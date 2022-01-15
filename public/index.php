@@ -20,33 +20,3 @@ src\App\Route::init();  //초기화
 
 
 
-
-
-
-
-// $a = new src\Student("김준서", ["프로그래밍", "게임"], 10);
-
-// echo "<pre>";
-// var_dump($a);
-// echo "</pre>";
-
-
-
-
-// include ("Human.php"); 
-
-// include 에러가 발생하면 무시하고 진행
-
-
-// $h1  = new Human("김준서", ["첫번째", "두번째"]);
-// $h2  = new Human("서울디지텍", ["첫번째", "두번째"]);
-
-// $h3 = clone($h2);
-// $h3->setName("변형된서울디지텍");
-
-// // php 무슨일이 있어도 구버전의 코드를 지원 //print_r var_dump
-// echo "<pre>";
-// var_dump($h1);
-// var_dump($h2);
-// var_dump($h3);
-// echo "</pre>";
