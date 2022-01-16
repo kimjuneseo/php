@@ -5,7 +5,7 @@ namespace src\App;
 class Route
 {
     private static $actions = [];
-
+    // __callStatic 호출된 메소드가 없을시 이 메소드 실행
     public static function __callStatic($method, $args)
     {
         // 서버의 현재 요청에 맞는 라우트만 $action에 넣어준다.
