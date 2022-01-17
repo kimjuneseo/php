@@ -6,6 +6,7 @@ date_default_timezone_set("Asia/Seoul");
 
 session_start(); //로그인을 위해서 세션을 만드는 작업
 
+// 지금 절대경로를 __ROOT상수로 선언
 define("__ROOT", dirname(__DIR__) );
 require_once (__ROOT . "/autoloader.php");
 require_once (__ROOT . "/func.php" );
