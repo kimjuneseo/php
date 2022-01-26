@@ -24,6 +24,7 @@ class DB
     {
         $q = self::getDB()->prepare($sql);
         $q->execute($data);
+        //아니면 false를 반환
         return $q->fetch();
         
     }
