@@ -1,0 +1,3 @@
+<main>
+    idx: <?=$idx?>
+</main>
