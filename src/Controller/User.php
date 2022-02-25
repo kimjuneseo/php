@@ -20,7 +20,7 @@ class User{
             back("비밀번호와 확인이 다릅니다");
         }
 
-        $result = fetch("SELECT *FROM users WHERE id=?",[$userId]);
+        $result = fetch("SELECT * FROM users WHERE id=?",[$userId]);
 
         if($result){
             back("이미 해당 아이디로 가입되어 있습니다");
