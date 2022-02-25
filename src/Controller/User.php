@@ -12,26 +12,27 @@ class User{
         $passc = $_POST['passwordc'];
         $username = $_POST['username'];
 
-        if($userID ==== '' || $pass === '' || $username === ''){
+        if($userId === '' || $pass == '' || $username == ''){
             back("필수값은 공백이 될 수 없습니다");
         }
 
-        if($pss !== $passc){
-            back("비미번호와 확인이 다릅니다");
+        if($pass != $passc){
+            back("비밀번호와 확인이 다릅니다");
         }
 
-        $result = fetch("SELECT *FROM user WHERE id=?",[$userId]);
+        $result = fetch("SELECT *FROM users WHERE id=?",[$userId]);
 
         if($result){
             back("이미 해당 아이디로 가입되어 있습니다");
         }
 
         $sql = "INSERT INTO users (`id`, `name`, `password`, `level`) VALUES (?,?,PASSWORD(?),?)";
-        $result = fetch($sql,[$userId, $username, $pass,1]);
+        $result = query($sql,[$userId, $username, $pass,1]);
 
         if(!$result){
             back("DB오류");
         }
+        move("/login", "성공적으로 회원가입 되었습니다");
     }
 
     function login(){
