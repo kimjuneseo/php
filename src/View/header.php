@@ -35,7 +35,7 @@
             <?php if(ss()): ?>
                 <a href="/test/1234">Test</a>
                 <a href="/logout">Logout</a>
-                <?=ss()->name?>
+                <span><?=ss()->name?>님 환영합니다</span>
             <?php else: ?>
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
