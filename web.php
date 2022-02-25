@@ -10,6 +10,6 @@ $get(
 
 $post(
     '/register@User@registerProcess',
-    '/login@User@login',
+    '/login@User@loginProcess',
 );
 

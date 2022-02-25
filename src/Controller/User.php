@@ -40,8 +40,23 @@ class User{
 
         move("/", "로그인성공");
     }
+
+    function loginProcess(){
+        $userId = $_POST['userId'];
+        $pass = $_POST['password'];
+        var_dump($_POST);
+        $user = fetch("SELECT * FROM users WHERE id = ? AND password = PASSWORD(?)", [$userId, $pass]);
+        
+        if(!$user){
+            back("잘못된 로그인 정보입니다.");
+        }
+        $_SESSION['user'] = $user;
+        move("/", "성공적으로 로그인 되었습니다.");
+    }
     function logout(){
         unset($_SESSION['user']);
         move("/","로그아웃되었습니다.");
     }
+
+
 }
