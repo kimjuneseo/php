@@ -5,7 +5,7 @@ function init($pages){
     foreach($pages as $p){
         [$path, $name, $method] = explode("@", $p);
         
-        $reg = preg_replace("/:([^\/])+/","([^/]+)", $path);
+        $reg = preg_replace("/:[^\/]+/","([^/]+)", $path);
         $reg = preg_replace("/\//", "\\/", $reg);
         $reg = "/^".$reg."$/";
         
