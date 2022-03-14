@@ -51,7 +51,7 @@ class User{
             back("잘못된 로그인 정보입니다.");
         }
         $_SESSION['user'] = $user;
-        move("/", "성공적으로 로그인 되었습니다.");
+       move("/", "성공적으로 로그인 되었습니다.");
     }
     function logout(){
         unset($_SESSION['user']);

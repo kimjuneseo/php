@@ -4,7 +4,7 @@ function init($pages){
     [$url] = explode("?", $_SERVER['REQUEST_URI']);
     foreach($pages as $p){
         [$path, $name, $method] = explode("@", $p);
-         
+        
         $reg = preg_replace("/:([^\/])+/","([^/]+)", $path);
         $reg = preg_replace("/\//", "\\/", $reg);
         $reg = "/^".$reg."$/";
@@ -19,7 +19,7 @@ function init($pages){
     }
     
     http_response_code(404);
-} 
+}
 
 function call($name, $args){
     if($_SERVER['REQUEST_METHOD'] == $name){

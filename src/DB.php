@@ -1,37 +1,51 @@
 <?php
 
-$db = null;
+class DB {
+  static $db = null;
+  static function get() {
+    if (!self::$db) {
+        $option = [ 19 => 5, 3 => 2];
 
-function get(){
-    if(!$db){
-        $option = [\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ, \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION];
-
-        $db = new \PDO("mysql:host=localhost;dbname=newmvc1;charset=utf8mb4", "root", "", $option);
+      self::$db = new \PDO("mysql:host=localhost;dbname=newmvc1;charset=utf8mb4", "root", "", $option);
     }
-    return $db;
+
+    
+    return self::$db;
+  }
 }
 
-function query($sql, $data = []){
-    $q = get()->prepare($sql);
-    return$q->execute($data);
-}
+function query($sql, $data = []) {
+  $q = DB::get()->prepare($sql);
 
-function fetch($sql, $data=[]){
-    $q = get()->prepare($sql);
+  try {
     $q->execute($data);
-    return $q->fetch();
+
+    return $q;
+  } catch(Exception $e) {
+    // 제출전 제거
+    echo "$e->getMessage() <br />";
+
+    return false;
+  }
 }
 
-function fetchAll($sql, $data = []){
-    $q = get()->preapre($sql);
-    $q->execute($data);
-    return $q->fetchAll();
+function fetch($sql, $data = []) {
+  $q = query($sql, $data);
+
+  return $q ? $q->fetch() : $q;
 }
 
-function find($table, $id){
-    return fetch("SELECT * FROM `$table` WHERE id = ?", [$id]);
+function fetchAll($sql, $data = []) {
+  $q = query($sql, $data);
+
+  return $q ? $q->fetchAll() : $q;
+}
+
+function find($table, $id) {
+  return fetch("SELECT * FROM `$table` WHERE id = ?", [$id]);
 }
 
 function lastInsertId(){
-    return get()->lastInsertId();
+  return DB::get()->lastInsertId();
 }
+

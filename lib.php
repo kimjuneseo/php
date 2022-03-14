@@ -43,7 +43,6 @@ function authCheck(){
 
 function view($flieName, $d = []){
     extract($d);
-    var_dump($flieName);
     require "src/View/header.php";
     require "src/View/$flieName.php";
     require "src/View/footer.php";
