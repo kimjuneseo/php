@@ -7,10 +7,8 @@ class User{
     }
 
     function registerProcess(){
-        $userId = $_POST['userId'];
-        $pass = $_POST['password'];
-        $passc = $_POST['passwordc'];
-        $username = $_POST['username'];
+        [$userId, $pass, $passc, $username] = post('userId','password','passwordc','username');
+
 
         if($userId === '' || $pass == '' || $username == ''){
             back("필수값은 공백이 될 수 없습니다");
@@ -42,9 +40,8 @@ class User{
     }
 
     function loginProcess(){
-        $userId = $_POST['userId'];
-        $pass = $_POST['password'];
-        var_dump($_POST);
+        [$userId, $pass] = post('userId', 'password');
+        
         $user = fetch("SELECT * FROM users WHERE id = ? AND password = PASSWORD(?)", [$userId, $pass]);
         
         if(!$user){

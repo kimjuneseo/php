@@ -1,49 +1,59 @@
 <?php
+namespace src\Controller;
 
-spl_autoload_register(function ($f){
-    $f = str_replace("\\", '/', $f);
-
-    require_once("../{$f}.php");
-});
-
-function e($t){
-    echo "<pre>$t</pre>";
-}
-
-function ss(){
-    return isset($_SESSION['user']) ? $_SESSION['user'] : false;
-}
-
-function script($s){
-    echo "<script>$s</script>";
-}
-
-function alert($t = ""){
-    // 비어있지 않으면
-    !empty($t) && script("alert('$t');");
-}
-
-function move($tg, $t = ''){
-    alert($t);
-    script("location.replace('$tg')");
-    exit;
-}
-
-function back($t = ''){
-    alert($t);
-    script("history.back();");
-    exit;
-}
-
-function authCheck(){
-    if(!ss()){
-        move('/login', '로그인 후 이용해 주세요.');
+class User{
+    function register(){
+        move("/login", "회원가입 성공");
     }
-}
 
-function view($flieName, $d = []){
-    extract($d);
-    require "src/View/header.php";
-    require "src/View/$flieName.php";
-    require "src/View/footer.php";
+    function registerProcess(){
+        [$userId, $pass, $passc, $username] = post('userId','password','passwordc','username');
+
+
+        if($userId === '' || $pass == '' || $username == ''){
+            back("필수값은 공백이 될 수 없습니다");
+        }
+ 
+        if($pass != $passc){
+            back("비밀번호와 확인이 다릅니다");
+        }
+
+        $result = fetch("SELECT * FROM users WHERE id=?",[$userId]);
+
+        if($result){
+            back("이미 해당 아이디로 가입되어 있습니다");
+        }
+
+        $sql = "INSERT INTO users (`id`, `name`, `password`, `level`) VALUES (?,?,PASSWORD(?),?)";
+        $result = query($sql,[$userId, $username, $pass,1]);
+
+        if(!$result){
+            back("DB오류");
+        }
+        move("/login", "성공적으로 회원가입 되었습니다");
+    }
+
+    function login(){
+        $_SESSION['user'] = ["id" => 1, "name "=> 'test'];
+
+        move("/", "로그인성공");
+    }
+
+    function loginProcess(){
+        [$userId, $pass] = post('userId', 'password');
+        
+        $user = fetch("SELECT * FROM users WHERE id = ? AND password = PASSWORD(?)", [$userId, $pass]);
+        
+        if(!$user){
+            back("잘못된 로그인 정보입니다.");
+        }
+        $_SESSION['user'] = $user;
+       move("/", "성공적으로 로그인 되었습니다.");
+    }
+    function logout(){
+        unset($_SESSION['user']);
+        move("/","로그아웃되었습니다.");
+    }
+
+
 }
