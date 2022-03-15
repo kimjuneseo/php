@@ -2,10 +2,6 @@
 namespace src\Controller;
 
 class User{
-    function register(){
-        move("/login", "회원가입 성공");
-    }
-
     function registerProcess(){
         [$userId, $pass, $passc, $username] = post('userId','password','passwordc','username');
 
@@ -31,12 +27,6 @@ class User{
             back("DB오류");
         }
         move("/login", "성공적으로 회원가입 되었습니다");
-    }
-
-    function login(){
-        $_SESSION['user'] = ["id" => 1, "name "=> 'test'];
-
-        move("/", "로그인성공");
     }
 
     function loginProcess(){

@@ -9,6 +9,7 @@ class View{
     function login(){
         view('auth/login');
     }
+
     function register(){
         view('auth/register');
     }
