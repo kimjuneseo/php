@@ -40,6 +40,7 @@ class User{
         $_SESSION['user'] = $user;
        move("/", "성공적으로 로그인 되었습니다.");
     }
+    
     function logout(){
         unset($_SESSION['user']);
         move("/","로그아웃되었습니다.");
