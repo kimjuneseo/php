@@ -9,7 +9,7 @@ $get(
 );
 
 $post(
-    '/register@User@registerProcess',
-    '/login@User@loginProcess',
+    '/register@User@register',
+    '/login@User@login',
 );
 

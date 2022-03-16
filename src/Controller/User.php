@@ -2,7 +2,7 @@
 namespace src\Controller;
 
 class User{
-    function registerProcess(){
+    function register(){
         [$userId, $pass, $passc, $username] = post('userId','password','passwordc','username');
 
 
@@ -29,7 +29,7 @@ class User{
         move("/login", "성공적으로 회원가입 되었습니다");
     }
 
-    function loginProcess(){
+    function login(){
         [$userId, $pass] = post('userId', 'password');
         
         $user = fetch("SELECT * FROM users WHERE id = ? AND password = PASSWORD(?)", [$userId, $pass]);
@@ -40,7 +40,7 @@ class User{
         $_SESSION['user'] = $user;
        move("/", "성공적으로 로그인 되었습니다.");
     }
-    
+
     function logout(){
         unset($_SESSION['user']);
         move("/","로그아웃되었습니다.");
