@@ -16,7 +16,7 @@ function init($pages){
             $con->{$method}($r);
             exit;
         }
-    } 
+    }  
     
     http_response_code(404);
 }
