@@ -8,7 +8,6 @@ class DB {
 
       self::$db = new \PDO("mysql:host=localhost;dbname=newmvc1;charset=utf8mb4", "root", "", $option);
     }
-
     
     return self::$db;
   }
