@@ -11,7 +11,7 @@ class DB {
     
     return self::$db;
   } 
-}
+} 
 
 function query($sql, $data = []) {
   $q = DB::get()->prepare($sql);
